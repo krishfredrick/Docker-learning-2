@@ -5,8 +5,11 @@
   "license": "MIT",
   "scripts":{
 	  "start": "node dist/.",
-	  "dev": "nodemon src/.",
-    "build": "yarn tsc -b"
+	  "dev": "nodemon src/index.ts",
+    "build": "yarn tsc -b",
+    "migrate": "yarn prisma migrate dev",
+    "seeder": "yarn prisma seeder dev", 
+    "generate": "yarn prisma generate"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",

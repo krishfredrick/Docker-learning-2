@@ -10,7 +10,7 @@ console.log(process.env.DATABASE_URL, process.env.PORT);
 
 app.get("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const data = await db.tODO.findMany();
+    const data = await db.user.findMany();
     res.status(200).json({
       message: "Success",
       data: data,
@@ -26,11 +26,15 @@ app.get("/", async (req: Request, res: Response, next: NextFunction) => {
 });
 
 app.post("/", async (req: Request, res: Response, next: NextFunction) => {
-  const message = req.body?.message;
+  const {userName, title, message } = req.body?.message;
+
+
   try {
-    const data = await db.tODO.create({
+    const data = await db.user.create({
       data: {
-        message,
+        userName, 
+        title,
+        message
       },
     });
     res.status(200).json({

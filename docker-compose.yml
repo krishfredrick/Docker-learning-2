@@ -9,19 +9,34 @@ services:
     ports:
       - 2000:3000
 
+    environment:
+      - DATABASE_URL:postgresql://sampleuser:${DB_PASSWORD}@localhost:5434/MockData
+
     depends_on: 
       - DB
     networks:
       - sampleNetwork
     
-  DB:
+  db:
     image: postgres:alpine3.19
     environment: 
       POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: MockData
+      POSTGRES_USER: sampleuser
     volumes:
       - test:/var/lib/postgresql/data
     networks:
       - sampleNetwork
+
+  pg_admin:
+    image: dpage/pgadmin4:8
+    depends_on: 
+      - db
+    ports:
+      - 5050:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=noobielearner04@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=root
 
 volumes:
   test:

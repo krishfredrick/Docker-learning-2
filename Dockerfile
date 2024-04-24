@@ -1,16 +1,19 @@
-From node:alpine3.19
+FROM node:alpine3.19
 
 WORKDIR /app
 
-COPY package.json .
+COPY package.* .
 
-Run yarn install 
+RUN yarn install 
 
-copy . .
+COPY . .
 
-Run yarn prisma generate
+RUN yarn build
 
-Run yarn build
+RUN yarn prisma generate
+
+# RUN yarn migrate
+
 
 
 ENTRYPOINT [ "yarn" ]
