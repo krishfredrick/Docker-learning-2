@@ -13,7 +13,7 @@ services:
       - DATABASE_URL:postgresql://sampleuser:${DB_PASSWORD}@localhost:5434/MockData
 
     depends_on: 
-      - DB
+      - db
     networks:
       - sampleNetwork
     

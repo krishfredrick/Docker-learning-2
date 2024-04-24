@@ -56,7 +56,7 @@ app.use(async function (req, res) {
   return res;
 });
 
-const port = process.env.PORT ?? 4020;
+const port = process.env.PORT ?? 3000;
 
 (async () => {
   try {
