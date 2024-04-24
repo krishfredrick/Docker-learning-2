@@ -6,6 +6,8 @@ COPY package.* .
 
 RUN yarn install 
 
+COPY prisma .
+
 COPY . .
 
 RUN yarn build

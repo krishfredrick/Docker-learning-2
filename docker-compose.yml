@@ -10,7 +10,7 @@ services:
       - 2000:3000
 
     environment:
-      - DATABASE_URL:postgresql://sampleuser:${DB_PASSWORD}@localhost:5434/MockData
+      - DATABASE_URL:postgresql://sampleuser:${DB_PASSWORD}@db:5222/MockData
 
     depends_on: 
       - db
@@ -27,6 +27,8 @@ services:
       - test:/var/lib/postgresql/data
     networks:
       - sampleNetwork
+    ports:
+      - 5222:5432
 
   pg_admin:
     image: dpage/pgadmin4:8
