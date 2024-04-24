@@ -26,7 +26,7 @@ app.get("/", async (req: Request, res: Response, next: NextFunction) => {
 });
 
 app.post("/", async (req: Request, res: Response, next: NextFunction) => {
-  const {userName, title, message } = req.body?.message;
+  const {userName, title, message } = req.body;
 
 
   try {

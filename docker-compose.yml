@@ -10,7 +10,7 @@ services:
       - 2000:3000
 
     environment:
-      - DATABASE_URL:postgresql://sampleuser:${DB_PASSWORD}@db:5222/MockData
+      - DATABASE_URL=postgresql://sampleuser:sample@db:5432/MockData
 
     depends_on: 
       - db
@@ -20,15 +20,14 @@ services:
   db:
     image: postgres:alpine3.19
     environment: 
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_PASSWORD: sample
       POSTGRES_DB: MockData
       POSTGRES_USER: sampleuser
     volumes:
       - test:/var/lib/postgresql/data
     networks:
       - sampleNetwork
-    ports:
-      - 5222:5432
+
 
   pg_admin:
     image: dpage/pgadmin4:8
