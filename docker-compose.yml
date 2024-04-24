@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  mockcontainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    ports:
+      - 2000:3000
+
+    depends_on: 
+      - DB
+    networks:
+      - sampleNetwork
+    
+  DB:
+    image: postgres:alpine3.19
+    environment: 
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - test:/var/lib/postgresql/data
+    networks:
+      - sampleNetwork
+
+volumes:
+  test:
+
+networks:
+  sampleNetwork:
