@@ -16,7 +16,7 @@ RUN yarn prisma generate
 
 # RUN yarn migrate
 
-
+EXPOSE 3000
 
 ENTRYPOINT [ "yarn" ]
 
